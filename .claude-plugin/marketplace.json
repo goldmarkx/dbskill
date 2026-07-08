@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "dontbesilent 商业诊断工具箱 — 从 12,307 条推文中提炼方法论，做成 26 个 Claude Code skill",
-    "version": "2.16.0"
+    "version": "2.17.0"
   },
   "plugins": [
     {
@@ -267,7 +267,7 @@
     },
     {
       "name": "dbs-bridge",
-      "description": "双端 skill 桥接。把任意包含 SKILL.md 的 skill 目录，或包含多个 skill 子目录的集合目录，用软链同时挂到 Claude Code 和 Codex。改源目录后两端自动同步。支持单个 skill、集合目录批量桥接、外部绝对路径，以及拆桥和状态查看。",
+      "description": "多端 skill 桥接。把任意包含 SKILL.md 的 skill 目录，或包含多个 skill 子目录的集合目录，同时挂到 Claude Code、Codex、通用 Agents（~/.agents/skills）和 Grok。改源目录后多端自动同步。支持单个 skill、集合目录批量桥接、外部绝对路径，以及拆桥和状态查看。",
       "source": "./",
       "strict": false,
       "version": "1.0.0",
@@ -277,6 +277,8 @@
         "symlink",
         "claude-code",
         "codex",
+        "agents",
+        "doubao",
         "skill-management",
         "chinese"
       ],
@@ -286,7 +288,7 @@
     },
     {
       "name": "dbs-agent-migration",
-      "description": "Agent 工作台迁移。把任意项目整理成 Claude Code / Codex / Grok 三端一致的 Agent 工作台：审计规则文件、识别真源、统一命名与 bridge。",
+      "description": "Agent 工作台迁移。把任意项目整理成 Claude Code / Codex / Grok / 通用 Agents（~/.agents/skills）多端一致的 Agent 工作台：审计规则文件、识别真源、统一命名与 bridge。",
       "source": "./",
       "strict": false,
       "version": "1.0.0",
@@ -296,6 +298,8 @@
         "migration",
         "codex",
         "claude-code",
+        "grok",
+        "doubao",
         "agents-md",
         "bridge",
         "chinese"

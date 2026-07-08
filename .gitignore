@@ -26,3 +26,6 @@ workbuddy/
 
 # autoresearch 实验目录
 autoresearch/
+
+# beta skill：本地私有，不发 GitHub
+skills/dbs-beta-*/
