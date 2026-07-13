@@ -2,6 +2,7 @@
 """校验 dbskill 发布版本在全部公开入口保持一致。"""
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -19,12 +20,15 @@ if metadata_version != version:
         f"metadata.version 为 {metadata_version!r}，VERSION 为 {version!r}"
     )
 
-for label, expected in (
-    ("README 最新更新", f"**最新更新：v{version}**"),
-    ("README 当前版本", "当前版本：" + chr(96) + f"v{version}" + chr(96)),
-):
-    if expected not in readme:
-        errors.append(f"{label} 未声明为 v{version}")
+badge_version = re.search(
+    r"https://img\.shields\.io/badge/version-([0-9.]+)-111111\.svg", readme
+)
+if badge_version is None:
+    errors.append("README 未找到 Version Badge")
+elif badge_version.group(1) != version:
+    errors.append(
+        f"README Version Badge 为 {badge_version.group(1)!r}，VERSION 为 {version!r}"
+    )
 
 for plugin in marketplace.get("plugins", []):
     plugin_version = plugin.get("version")

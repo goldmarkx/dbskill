@@ -25,7 +25,9 @@ jobs:
           fi
 
       - name: Verify marketplace plugin versions
-        run: python3 tools/check-release-versions.py
+        run: |
+          python3 tools/check-release-versions.py
+          python3 tools/check-plugin-update-contract.py --release
 
       - name: Build skill bundle
         run: bash tools/build-skills.sh
